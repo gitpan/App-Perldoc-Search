@@ -1,0 +1,18 @@
+---
+name: App-Perldoc-Search
+version: 0.01
+author: []
+abstract: implementation for perldoc-search
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  Pod::Parser: 0
+provides:
+  App::Perldoc::Search:
+    file: lib/App/Perldoc/Search.pm
+    version: 0.01
+generated_by: Module::Build version 0.33
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
