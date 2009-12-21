@@ -1,18 +1,39 @@
 #!perl
-use Test::More tests => 2;
+use Test::More tests => 6;
 use strict;
 use warnings;
 
-use File::Spec::Functions qw( catfile );
-use File::Basename qw( dirname );
+use IPC::Run ();
+use Cwd ();
+use File::Spec ();
+use File::Basename ();
 
-my $search = catfile( dirname( $0 ), '../scripts/perldoc-search');
+my $dir = Cwd::abs_path( File::Basename::dirname( $0 ) );
+my $search = File::Spec->catfile( $dir, '../script/perldoc-search' );
 
-# Try searching for Module::Build
-my $mbuild = `$^X -Mblib $search Module::Build`;
-like( $mbuild, qr/^Module::Build/m, 'Found Module::Build' );
+search_ok( 'add_build_element', qr/^Module::Build/m, 'Found Module::Build' );
 
 # echo -n 'Try searching for something that probably doesn'\''t exist' | md5
 # dc098fbcf3f9bf8ba7898addba4591cb
-my $md5 = `$^X -Mblib dc098fbcf3f9bf8ba7898addba4591cb`;
-is( $md5, '', q(Didn't find my unlikely md5sum) );
+search_ok( 'dc098fbcf3f9bf8ba7898addba4591cb', qr/^$/, "Couldn't find dc098fbcf3f9bf8ba7898addba4591cb" );
+
+
+sub search_ok {
+    my ( $phrase, $expected, $test_name ) = @_;
+
+    my @command = (
+        $^X,
+        '-Mblib',
+        $search,
+        $phrase
+    );
+    my $success = IPC::Run::run(
+        \ @command,
+        '>',  \ my $stdout,
+        '2>', \ my $stderr,
+    );
+
+    ok( $success, "@command" );
+    is( $stderr, '', "No errors" );
+    like( $stdout, $expected, $test_name );
+}

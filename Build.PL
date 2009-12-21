@@ -1,11 +1,15 @@
 #!/usr/bin/perl
-use 5.006_000;
 use strict;
+use 5.006;
 use warnings;
 use Module::Build;
 my $build = Module::Build->new(
     module_name => 'App::Perldoc::Search',
     license => 'perl',
+    build_requires => {
+        'Test::More' => 0,
+        'IPC::Run' => 0,
+    },
     requires => {
         # Core
         'perl' => '5.6.0',
@@ -21,7 +25,7 @@ my $build = Module::Build->new(
         # CPAN
     },
     scripts => [qw[
-        scripts/perldoc-search
+        script/perldoc-search
     ]],
 );
 $build->create_build_script;
