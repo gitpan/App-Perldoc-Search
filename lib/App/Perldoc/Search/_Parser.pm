@@ -1,8 +1,15 @@
 package App::Perldoc::Search::_Parser;
+BEGIN {
+  $App::Perldoc::Search::_Parser::VERSION = '0.07';
+}
 
 =head1 NAME
 
 App::Perldoc::Search::_Parser - Pod parser for extracting NAME and searching for matchs
+
+=head1 VERSION
+
+version 0.07
 
 =head1 SYNOPSIS
 

@@ -1,27 +1,13 @@
-App-Perldoc-Search version 0.01
-===============================
 
-DESCRIPTION
 
-App::Perldoc::Search searches your perl documentation files for
-matches and displays the result to STDOUT.
+This archive contains the distribution App-Perldoc-Search,
+version 0.07:
 
-INSTALLATION
+  implementation for perldoc-search
 
-To install this module type the following:
+This software is copyright (c) 2011 by Josh Jore.
 
-   perl Build.PL
-   ./Build
-   ./Build test
-   ./Build install
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
-DEPENDENCIES
 
-This module requires these other modules and libraries:
-
-  * parent
-  * File::Find
-  * Getopt::Long
-  * Pod::Usage
-  * Pod:Parser
-  * IO::File

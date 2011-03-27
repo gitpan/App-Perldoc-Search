@@ -1,9 +1,14 @@
-Build.PL
 Changes
+LICENSE
+MANIFEST
+META.yml
+Makefile.PL
+README
+bin/perldoc-search
+dist.ini
+dist.ini~
 lib/App/Perldoc/Search.pm
 lib/App/Perldoc/Search/_Parser.pm
-MANIFEST			This list of files
-META.yml
-README
-script/perldoc-search
 t/App-Perldoc-Search.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t

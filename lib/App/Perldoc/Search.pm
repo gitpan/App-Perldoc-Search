@@ -1,8 +1,15 @@
 package App::Perldoc::Search;
+BEGIN {
+  $App::Perldoc::Search::VERSION = '0.07';
+}
 
 =head1 NAME
 
 App::Perldoc::Search - implementation for perldoc-search
+
+=head1 VERSION
+
+version 0.07
 
 =head1 SYNOPSIS
 
@@ -31,13 +38,11 @@ use Pod::Usage ();
 use IO::File ();
 use App::Perldoc::Search::_Parser ();
 
-our $VERSION = '0.06';
-
-
-
-=head2 App::Perldoc::Search-E<lt>run( OPTIONS )
+=head2 run
 
 The main run loop. Handles all getopt parsing. See L<perldoc-script> for the options.
+
+    App::Perldoc::Search->run( @options );
 
 =cut
 
@@ -49,7 +54,8 @@ sub run {
     my $file_match_rx = qr/\.p(?:od|mc?)$/;
     Getopt::Long::GetOptions(
         'G=s'   => sub { $file_match_rx = qr/$_[1]/ },
-        'help'  => \ &_help )
+        'help'  => \ &_help,
+        'l'     => \ my $list_files )
       or _error_help();
 
     # Validate pattern.
@@ -97,8 +103,13 @@ sub run {
             my $name = $searcher->{name} || $_;
 
             # Report.
-            print "$name\n"
-                or warn "Can't write: $!";
+            if ($list_files) {
+                print "$_\n";
+            }
+            else {
+                print "$name\n"
+                    or warn "Can't write: $!";
+            }
         }},
         @search_path );
 
