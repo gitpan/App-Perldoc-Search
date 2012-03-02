@@ -1,6 +1,6 @@
 package App::Perldoc::Search;
 BEGIN {
-  $App::Perldoc::Search::VERSION = '0.08';
+  $App::Perldoc::Search::VERSION = '0.09';
 }
 
 use 5.006;
@@ -136,7 +136,7 @@ App::Perldoc::Search - implementation for perldoc-search
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 

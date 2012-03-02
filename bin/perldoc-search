@@ -11,7 +11,7 @@ perldoc-search - Searches perl documentation
 
 =head1 VERSION
 
-version 0.08
+version 0.09
 
 =head1 SYNOPSIS
 
@@ -49,6 +49,11 @@ Lists matched file names.
 =item --help
 
 Displays this documentation
+
+=item --slow
+
+Do a slower search which parses embedded documentation to reject false
+positives and more accurately extract the document's title.
 
 =back
 

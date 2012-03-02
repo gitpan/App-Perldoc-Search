@@ -18,4 +18,4 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=App-Perldoc-Search
   homepage: http://search.cpan.org/dist/App-Perldoc-Search
   repository: git://github.com/jbenjore/app-perldoc-search.git
-version: 0.08
+version: 0.09
