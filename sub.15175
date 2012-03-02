@@ -1,0 +1,13 @@
+open("/etc/ld.so.cache", O_RDONLY)      = 3
+open("/lib/libncurses.so.5", O_RDONLY)  = 3
+open("/lib/i386-linux-gnu/libc.so.6", O_RDONLY) = 3
+open("/lib/i386-linux-gnu/libdl.so.2", O_RDONLY) = 3
+open("/lib/libtinfo.so.5", O_RDONLY)    = 3
+open("/lib/terminfo/x/xterm", O_RDONLY|O_LARGEFILE) = 3
+open("/usr/bin/.sysless", O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open("/etc/sysless", O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open("/home/josh/.less", O_RDONLY|O_LARGEFILE) = -1 ENOENT (No such file or directory)
+open("/usr/lib/locale/locale-archive", O_RDONLY|O_LARGEFILE) = 3
+open("/home/josh/.lesshst", O_RDONLY|O_LARGEFILE) = 3
+open("/dev/tty", O_RDONLY|O_LARGEFILE)  = 3
+open("/tmp/W3ihBHN0iu", O_RDONLY|O_LARGEFILE) = 4
