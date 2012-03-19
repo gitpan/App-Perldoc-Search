@@ -1,5 +1,0 @@
-open("/etc/ld.so.cache", O_RDONLY)      = 3
-open("/lib/i386-linux-gnu/libc.so.6", O_RDONLY) = 3
-open("/usr/bin/nroff", O_RDONLY)        = 3
---- SIGCHLD (Child exited) @ 0 (0) ---
---- SIGCHLD (Child exited) @ 0 (0) ---

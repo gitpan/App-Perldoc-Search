@@ -1,9 +1,0 @@
-open("/etc/ld.so.cache", O_RDONLY)      = 3
-open("/usr/lib/i386-linux-gnu/libstdc++.so.6", O_RDONLY) = 3
-open("/lib/i386-linux-gnu/libm.so.6", O_RDONLY) = 3
-open("/lib/i386-linux-gnu/libgcc_s.so.1", O_RDONLY) = 3
-open("/lib/i386-linux-gnu/libc.so.6", O_RDONLY) = 3
-open("/usr/share/groff/site-font/devutf8/DESC", O_RDONLY) = -1 ENOENT (No such file or directory)
-open("/usr/share/groff/1.21/font/devutf8/DESC", O_RDONLY) = 3
---- SIGCHLD (Child exited) @ 0 (0) ---
---- SIGCHLD (Child exited) @ 0 (0) ---

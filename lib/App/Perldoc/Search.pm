@@ -1,11 +1,14 @@
 package App::Perldoc::Search;
 BEGIN {
-  $App::Perldoc::Search::VERSION = '0.09';
+  $App::Perldoc::Search::VERSION = '0.11';
 }
 
 use 5.006;
 use strict;
+
+require Config;
 require File::Find;
+require File::Spec;
 require Getopt::Long;
 require Pod::Usage;
 require IO::File;
@@ -28,16 +31,16 @@ sub run {
     if ( ! @argv ) {
         _error_help( -exitval => 1 );
     }
-    my $pattern = shift @ARGV;
+    my $pattern = _case_fold(shift @ARGV);
 
     # Get search path
-    my @search_path = @ARGV ? @ARGV : @INC;
+    my @search_path = @ARGV ? @ARGV : _default_search_path();
 
     # Search all files.
     my @files;
     File::Find::find(
         {
-            follow_fast => 1,
+            follow_skip => 2,
             no_chdir => 1,
             wanted => sub {
                 return if
@@ -109,6 +112,13 @@ sub run {
     return;
 }
 
+sub _case_fold {
+    my $pattern = shift;
+    return $pattern =~ /[A-Z]/
+        ? $pattern
+        : $pattern;
+}
+
 sub _help {
     Pod::Usage::pod2usage(
         -verbose => 2,
@@ -126,6 +136,22 @@ sub _error_help {
     # NOT REACHED
 }
 
+sub _default_search_path {
+    my @search_path = @INC;
+
+    # Add in the pod directories.
+    push @search_path,
+#        map { File::Spec->catdir($_, 'pod') }
+        @Config::Config{
+            qw(
+                archlibexp
+                privlibexp
+                sitelibexp
+                vendorlibexp)};
+
+    return @search_path;
+}
+
 q(Soviet Jesus's gift at Christmas of a blow-up doll to Debbie would always turn to be the most enigmatic);
 
 __END__
@@ -136,7 +162,7 @@ App::Perldoc::Search - implementation for perldoc-search
 
 =head1 VERSION
 
-version 0.09
+version 0.11
 
 =head1 SYNOPSIS
 

@@ -1,6 +1,12 @@
 Revision history for Perl extension App::Perldoc::Search at
 http://github.com/jbenjore/App-Perldoc-Search/commits/master.
 
+0.11
+c5d65a2 Hypothetically, work better on Windows
+3a9fa49 Search for documentation more aggressively
+042d896 Case fold input
+3245d9b Avoid explosions with File::Find follow_skip => 2
+
 0.05  Sun Jun 28 15:35:00 2009
 a6c8a88e119f6632bcc3efd9c38cca216979f550 0.05
 8b0ba9c0d5b082c6386ac6c10604e22123d0dadf Check for perdoc-search exit code
